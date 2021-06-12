@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper';
 import {
   Chart,
@@ -14,15 +15,6 @@ const getUsersData = async() => {
     const res = await axios.get('https://jsonplaceholder.typicode.com/users')
     console.log(res.data)
     this.setState({loading:false, data: res.data})
-  }
-
-  
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data,
-    };
   }
 
   const pie = () => {
@@ -45,6 +37,17 @@ export default class Demo extends React.PureComponent {
     
   }
 
+  
+export default class Demo extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data,
+    };
+  }
+
+  
+
   render() {
     const { data: chartData } = this.state;
 
@@ -57,7 +60,7 @@ export default class Demo extends React.PureComponent {
       
      <Button variant="contained" color="primary" href="#contained-buttons" onClick={pie}
       style={{ marginLeft: '10px', marginTop: '30px', float: 'left'}}>
-      Go to Page 1
+      Show Pie Chart
      </Button>
       </div>
     );
