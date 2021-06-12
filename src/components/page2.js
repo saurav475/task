@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button'
+import axios from 'axios'
 import Paper from '@material-ui/core/Paper';
 import {
   Chart,
@@ -19,7 +20,8 @@ const getUsersData = async() => {
 
   const pie = () => {
     return(
-      <Paper>
+      <div>
+        <Paper>
         <Chart
           data={chartData}
         >
@@ -33,6 +35,8 @@ const getUsersData = async() => {
           <Animation />
         </Chart>
       </Paper>
+      </div>
+      
     );
     
   }

@@ -57,7 +57,7 @@ export default class App extends Component {
   ]
     return (
       <div>
-        <Button variant="contained" color="primary" href="#contained-buttons" onClick={() => { history.push('/page2') }}
+        <Button variant="contained" color="primary" href="#contained-buttons"
       style={{ marginLeft: '10px', marginTop: '30px', float: 'left'}}>
       Go to Page 2
      </Button>
