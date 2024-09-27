@@ -1,18 +1,20 @@
-import React from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import '../PopupFooter/PopupFooter.scss';
 import axios from 'axios';
 
-const history = useHistory();
+
 
  const PopupFooter = (props) => {
     const setOpenPopup = props.setOpenPopup;
     const inputData = props.inputData;
     const array = props.array;
     console.log('props', props)
-    function handleSubmit(){
+ 
+    function handleSubmit(e){
+      e.preventDefault();
       if(inputData!==""){
       const result = array.map(obj => {
         const [firstKey, firstValue] = Object.entries(obj)[0];
@@ -37,8 +39,6 @@ const history = useHistory();
         .then(res => {
           if (res.status === 200)
             toast.success("Success!");
-  
-            history.push('/localhost:3000')
                   
           } )
           .catch(err => {
@@ -46,6 +46,7 @@ const history = useHistory();
          });
     }
     }
+
   return (
     <div className='footer-container'>
         <div className='popup-btn-wrapper' onClick={handleSubmit}><button className='popup-save-btn'>Save the Segment</button></div>
