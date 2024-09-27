@@ -1,6 +1,11 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import '../PopupFooter/PopupFooter.scss';
 import axios from 'axios';
+
+const history = useHistory();
 
  const PopupFooter = (props) => {
     const setOpenPopup = props.setOpenPopup;
@@ -29,9 +34,16 @@ import axios from 'axios';
         // console.log('payload', payload);
      
         axios.post("https://eo5oir38966l8l9.m.pipedream.net", options)
-        .then(function(response){
-          console.log('response',response)
-        })
+        .then(res => {
+          if (res.status === 200)
+            toast.success("Success!");
+  
+            history.push('/localhost:3000')
+                  
+          } )
+          .catch(err => {
+            toast.success(err);   
+         });
     }
     }
   return (
